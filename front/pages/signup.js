@@ -1,22 +1,14 @@
-import React, { useCallback, useState } from "react";
+import React, { useCallback } from "react";
 import Head from "next/head";
 import { Form, Input } from "antd";
 import AppLayout from "../components/AppLayout";
+import useInput from "../hooks/useInput";
 
 const Signup = () => {
-  const [id, setId] = useState("");
-  const [password, setPassword] = useState("");
-  const [nickname, setNickname] = useState("");
+  const [id, onChangeId] = useInput("");
+  const [password, onChangePw] = useInput("");
+  const [nickname, onChangeNick] = useInput("");
 
-  const onChangeId = useCallback((e) => {
-    setId(e.target.value);
-  });
-  const onChangePw = useCallback((e) => {
-    setPassword(e.target.value);
-  });
-  const onChangeNick = useCallback((e) => {
-    setNickname(e.target.value);
-  });
   const onSubmit = useCallback(() => {}, []);
 
   return (
