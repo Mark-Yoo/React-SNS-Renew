@@ -43,14 +43,15 @@ const AppLayout = ({ children }) => {
             <LoginForm setIsLoggedIn={setIsLoggedIn} />
           )}
         </Col>
-        <Col xs={24} md={12}></Col>
+        <Col xs={24} md={12}>
+          {children}
+        </Col>
         <Col xs={24} md={6}>
           <a href="https://github.com/Mark-Yoo" rel="noreferrer noopener">
             to Github
           </a>
         </Col>
       </Row>
-      {children}
     </div>
   );
 };
