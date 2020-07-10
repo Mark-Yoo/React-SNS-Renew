@@ -20,5 +20,6 @@
 - a 태그를 _blank 속성으로 열게 되면 언제나 opener를 참조할 수 있다. 때문에 부모 탭과 같은 스레드에서 페이지가 동작한다. Noopener 속성을 사용한다면 열린 탭은 부모를 호출 할 일이 없다.
 
   > Tabnabbing : a 태그의 target이 _blank인 경우 새롭게 열린 탭에서 기존 location을 피싱 사이트로 변경, 정보를 탈취하는 공격
+- 몇 몇 취약한 웹사이트들은 메일을 통해서 옮겨짐
 
 - 또한 Tabnabbing 등 악의적인 공격으로부터 무방비하므로 noopener noreferrer를 사용해서 새로운 페이지로 인해서 생길 수 있는 성능 저하를 막고 window.opener를 통한 악의적인 location 편경을 막을 수 있다.
