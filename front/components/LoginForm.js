@@ -61,7 +61,7 @@ const LoginForm = ({ setIsLoggedIn }) => {
 };
 
 LoginForm.propTypes = {
-  setIsLoggedIn: PropTypes.func,
+  setIsLoggedIn: PropTypes.func.isRequired,
 };
 
 export default LoginForm;
