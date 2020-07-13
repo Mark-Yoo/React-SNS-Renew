@@ -38,6 +38,7 @@ const Signup = () => {
     if (!term) {
       return setTermError(true);
     }
+    console.log(id, password, term);
   }, [password, passwordCheck, term]);
 
   return (

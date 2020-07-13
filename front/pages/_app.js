@@ -3,6 +3,8 @@ import PropTypes from "prop-types";
 import Head from "next/head";
 import "antd/dist/antd.css";
 
+import wrapper from "../store/configureStore";
+
 const ReactSNS = ({ Component }) => {
   return (
     <>
@@ -19,4 +21,4 @@ ReactSNS.propTypes = {
   Component: PropTypes.elementType.isRequired,
 };
 
-export default ReactSNS;
+export default wrapper.withRedux(ReactSNS);
