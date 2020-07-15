@@ -53,7 +53,7 @@ const PostCard = ({ post }) => {
               </Button.Group>
             }
           >
-            <EllipsisOutlined />,
+            <EllipsisOutlined />
           </Popover>,
         ]}
       >
