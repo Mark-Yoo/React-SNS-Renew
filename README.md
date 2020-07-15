@@ -25,3 +25,5 @@
 - 몇 몇 취약한 웹사이트들은 메일을 통해서 옮겨짐
 
 - 또한 Tabnabbing 등 악의적인 공격으로부터 무방비하므로 noopener noreferrer를 사용해서 새로운 페이지로 인해서 생길 수 있는 성능 저하를 막고 window.opener를 통한 악의적인 location 편경을 막을 수 있다.
+
+- DEHYDRATE 새로 추가됨
