@@ -29,3 +29,4 @@
 - DEHYDRATE 새로 추가됨
 - redux 연결 완료
 - redux-devtools 연결
+- react-devtools 사용
