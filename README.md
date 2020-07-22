@@ -31,3 +31,4 @@
 - redux-devtools 연결
 - react-devtools 사용
 최적화를 위한 hooks 사용
+- C# 공부 시작
