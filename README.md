@@ -32,3 +32,4 @@
 - react-devtools 사용
 최적화를 위한 hooks 사용
 - C# 공부 시작
+- dependency 문제로 깃허브 풀리퀘
