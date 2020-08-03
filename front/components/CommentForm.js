@@ -6,11 +6,10 @@ import { useSelector } from "react-redux";
 
 const CommentForm = ({ post }) => {
   const id = useSelector((state) => state.user.me?.id);
-  const [commentText, setCommentText] = useInput("");
+  const [commentText, onChangeCommentText] = useInput("");
   const onSubmitComment = useCallback(() => {
     console.log(post.id, commentText);
   }, [commentText]);
-  const onChangeCommentText = useCallback(() => {}, []);
   return (
     <Form onFinish={onSubmitComment}>
       <Form.Item style={{ position: "relative", margin: 0 }}>
