@@ -9,7 +9,16 @@ export const initialState = {
       content: "첫번째 게시글 #해시태그 #익스프레스",
       Images: [
         {
-          src: "",
+          src:
+            "https://bookthumb-phinf.pstatic.net/cover/137/995/13799585.jpg?udate=20180726",
+        },
+        {
+          src:
+            "https://bookthumb-phinf.pstatic.net/cover/137/995/13799585.jpg?udate=20180726",
+        },
+        {
+          src:
+            "https://bookthumb-phinf.pstatic.net/cover/137/995/13799585.jpg?udate=20180726",
         },
       ],
       Comments: [
