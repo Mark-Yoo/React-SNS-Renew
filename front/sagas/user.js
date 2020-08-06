@@ -36,9 +36,6 @@ function* logOut() {
   try {
     // 실제 서버가 현재 없으므로 사용하는 delay
     yield delay(1000);
-    yield put({
-      type: "LOG_OUT_REQUEST",
-    });
     // yield가 await와 같은 역할을 해주므로 여기에서는 call을 사용한다.
     // const result = yield call(logOutAPI);
     yield put({
