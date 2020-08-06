@@ -8,14 +8,12 @@ function logInAPI(data) {
 function* logIn(action) {
   try {
     yield delay(1000);
-    yield put({
-      type: "LOG_IN_REQUEST",
-    });
     // yield가 await와 같은 역할을 해주므로 여기에서는 call을 사용한다.
     // action을 통해서 type과 data를 받아오며 call, fork를 통해서 loginAPI로 전달된다.
     // const result = yield call(logInAPI, action.data);
     yield put({
       type: "LOG_IN_SUCCESS",
+      data: action.data,
     });
   } catch (err) {
     yield put({
