@@ -1,19 +1,26 @@
-import React, { useCallback, useState, useRef } from "react";
+import React, { useCallback, useEffect, useRef } from "react";
 import { Form, Input, Button } from "antd";
 import { useSelector, useDispatch } from "react-redux";
 import { addPost } from "../reducers/post";
+import useInput from "../hooks/useInput";
 
 const PostForm = () => {
-  const { imagePaths } = useSelector((state) => state.post);
+  const { imagePaths, addPostDone } = useSelector((state) => state.post);
   const dispatch = useDispatch();
   const imageInput = useRef();
-  const [text, setText] = useState("");
-  const onChangeText = useCallback((e) => {
-    setText(e.target.value);
-  }, []);
+  const [text, onChangeText, setText] = useInput("");
+
+  // 서버 오류 등의 이유로 데이터가 보내지지 않은 상태에서 댓글창이 초기화 되는 것을 막기위한 useEffect
+  useEffect(() => {
+    if (addPostDone) {
+      setText("");
+    }
+  }, [addPostDone]);
+
   const onSubmit = useCallback(() => {
-    dispatch(addPost);
-  }, []);
+    dispatch(addPost(text));
+  }, [text]);
+
   const onClickImageUpload = useCallback(() => {
     imageInput.current.click();
   }, [imageInput.current]);

@@ -4,7 +4,7 @@ import { Form, Input, Checkbox, Button } from "antd";
 import AppLayout from "../components/AppLayout";
 import useInput from "../hooks/useInput";
 import styled from "styled-components";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { SIGN_UP_REQUEST } from "../reducers/post";
 
 const ErrorMessage = styled.div`
@@ -13,6 +13,7 @@ const ErrorMessage = styled.div`
 
 const Signup = () => {
   const dispatch = useDispatch();
+  const { signUpLoading } = useSelector((state) => state.user);
 
   const [email, onChangeEmail] = useInput("");
   const [password, onChangePw] = useInput("");
@@ -62,6 +63,7 @@ const Signup = () => {
             <br />
             <Input
               name="user-email"
+              type="email"
               value={email}
               required
               onChange={onChangeEmail}
@@ -111,7 +113,7 @@ const Signup = () => {
             )}
           </div>
           <div style={{ marginTop: 10 }}>
-            <Button type="primary" htmlType="submit">
+            <Button type="primary" htmlType="submit" loading={signUpLoading}>
               가입하기
             </Button>
           </div>

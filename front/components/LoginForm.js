@@ -32,6 +32,7 @@ const LoginForm = () => {
           name="user-email"
           value={email}
           onChange={onChangeEmail}
+          type="email"
           required
         />
       </div>
