@@ -40,10 +40,12 @@ const Signup = () => {
 
   const onSubmit = useCallback(() => {
     if (password !== passwordCheck) {
-      return setPasswordError(true);
+      setPasswordError(true);
+      return;
     }
     if (!term) {
-      return setTermError(true);
+      setTermError(true);
+      return;
     }
     console.log(email, password, term);
     dispatch({
