@@ -1,5 +1,7 @@
-import { all, fork, put, delay, takeLatest } from "redux-saga/effects";
-import axios from "axios";
+import {
+  all, fork, put, delay, takeLatest,
+} from 'redux-saga/effects';
+import axios from 'axios';
 import {
   LOG_IN_REQUEST,
   LOG_IN_SUCCESS,
@@ -10,11 +12,11 @@ import {
   SIGN_UP_REQUEST,
   SIGN_UP_SUCCESS,
   SIGN_UP_FAILURE,
-} from "../reducers/user";
+} from '../reducers/user';
 
 // 로그인
 function logInAPI(data) {
-  return axios.post("/api/login", data);
+  return axios.post('/api/login', data);
 }
 function* logIn(action) {
   try {
@@ -41,7 +43,7 @@ function* watchLogIn() {
 
 // 로그아웃
 function logOutAPI() {
-  return axios.post("/api/logout");
+  return axios.post('/api/logout');
 }
 function* logOut() {
   try {
@@ -65,7 +67,7 @@ function* watchLogOut() {
 }
 
 function signUpAPI() {
-  return axios.post("/api/singUp");
+  return axios.post('/api/singUp');
 }
 
 function* signUp() {

@@ -1,11 +1,13 @@
-import React, { useCallback, useState } from "react";
-import Head from "next/head";
-import { Form, Input, Checkbox, Button } from "antd";
-import AppLayout from "../components/AppLayout";
-import useInput from "../hooks/useInput";
-import styled from "styled-components";
-import { useDispatch, useSelector } from "react-redux";
-import { SIGN_UP_REQUEST } from "../reducers/post";
+import React, { useCallback, useState } from 'react';
+import Head from 'next/head';
+import {
+  Form, Input, Checkbox, Button,
+} from 'antd';
+import styled from 'styled-components';
+import { useDispatch, useSelector } from 'react-redux';
+import AppLayout from '../components/AppLayout';
+import useInput from '../hooks/useInput';
+import { SIGN_UP_REQUEST } from '../reducers/user';
 
 const ErrorMessage = styled.div`
   color: red;
@@ -15,21 +17,21 @@ const Signup = () => {
   const dispatch = useDispatch();
   const { signUpLoading } = useSelector((state) => state.user);
 
-  const [email, onChangeEmail] = useInput("");
-  const [password, onChangePw] = useInput("");
-  const [nickname, onChangeNick] = useInput("");
+  const [email, onChangeEmail] = useInput('');
+  const [password, onChangePw] = useInput('');
+  const [nickname, onChangeNick] = useInput('');
 
-  const [passwordCheck, setPasswordCheck] = useState("");
+  const [passwordCheck, setPasswordCheck] = useState('');
   const [passwordError, setPasswordError] = useState(false);
   const onPasswordCheck = useCallback(
     (e) => {
       setPasswordCheck(e.target.value);
       setPasswordError(e.target.value !== password);
     },
-    [password]
+    [password],
   );
 
-  const [term, setTerm] = useState("");
+  const [term, setTerm] = useState('');
   const [termError, setTermError] = useState(false);
   const onChangeTerm = useCallback((e) => {
     setTerm(e.target.checked);

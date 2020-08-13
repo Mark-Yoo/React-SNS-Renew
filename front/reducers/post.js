@@ -4,35 +4,35 @@ export const initialState = {
       id: 1,
       User: {
         id: 1,
-        nickname: "Mark-Yoo",
+        nickname: 'Mark-Yoo',
       },
-      content: "첫번째 게시글 #해시태그 #익스프레스",
+      content: '첫번째 게시글 #해시태그 #익스프레스',
       Images: [
         {
           src:
-            "https://bookthumb-phinf.pstatic.net/cover/137/995/13799585.jpg?udate=20180726",
+            'https://bookthumb-phinf.pstatic.net/cover/137/995/13799585.jpg?udate=20180726',
         },
         {
           src:
-            "https://bookthumb-phinf.pstatic.net/cover/137/995/13799585.jpg?udate=20180726",
+            'https://bookthumb-phinf.pstatic.net/cover/137/995/13799585.jpg?udate=20180726',
         },
         {
           src:
-            "https://bookthumb-phinf.pstatic.net/cover/137/995/13799585.jpg?udate=20180726",
+            'https://bookthumb-phinf.pstatic.net/cover/137/995/13799585.jpg?udate=20180726',
         },
       ],
       Comments: [
         {
           User: {
-            nickname: "Yuliya",
+            nickname: 'Yuliya',
           },
-          content: "hi!",
+          content: 'hi!',
         },
         {
           User: {
-            nickname: "Vladimir",
+            nickname: 'Vladimir',
           },
-          content: "Yay!",
+          content: 'Yay!',
         },
       ],
     },
@@ -43,13 +43,13 @@ export const initialState = {
   addPostError: null,
 };
 
-export const ADD_POST_REQUEST = "ADD_POST_REQUEST";
-export const ADD_POST_SUCCESS = "ADD_POST_SUCCESS";
-export const ADD_POST_FAILURE = "ADD_POST_FAILURE";
+export const ADD_POST_REQUEST = 'ADD_POST_REQUEST';
+export const ADD_POST_SUCCESS = 'ADD_POST_SUCCESS';
+export const ADD_POST_FAILURE = 'ADD_POST_FAILURE';
 
-export const ADD_COMMENT_REQUEST = "ADD_COMMENT_REQUEST";
-export const ADD_COMMENT_SUCCESS = "ADD_COMMENT_SUCCESS";
-export const ADD_COMMENT_FAILURE = "ADD_COMMENT_FAILURE";
+export const ADD_COMMENT_REQUEST = 'ADD_COMMENT_REQUEST';
+export const ADD_COMMENT_SUCCESS = 'ADD_COMMENT_SUCCESS';
+export const ADD_COMMENT_FAILURE = 'ADD_COMMENT_FAILURE';
 
 export const addPost = (data) => ({
   type: ADD_POST_REQUEST,
@@ -63,10 +63,10 @@ export const addComment = (data) => ({
 
 const dummyPost = {
   id: 2,
-  content: "더미데이터",
+  content: '더미데이터',
   User: {
     id: 2,
-    nickname: "제로초",
+    nickname: '제로초',
   },
   Images: [],
   Comments: [],

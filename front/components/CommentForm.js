@@ -1,19 +1,19 @@
-import React, { useCallback, useEffect } from "react";
-import { Form, Input, Button } from "antd";
-import useInput from "../hooks/useInput";
-import PropTypes from "prop-types";
-import { useSelector, useDispatch } from "react-redux";
-import { ADD_COMMENT_REQUEST } from "../reducers/post";
+import React, { useCallback, useEffect } from 'react';
+import { Form, Input, Button } from 'antd';
+import PropTypes from 'prop-types';
+import { useSelector, useDispatch } from 'react-redux';
+import useInput from '../hooks/useInput';
+import { ADD_COMMENT_REQUEST } from '../reducers/post';
 
 const CommentForm = ({ post }) => {
   const id = useSelector((state) => state.user.me?.id);
   const { addCommentDone } = useSelector((state) => state.post);
-  const [commentText, onChangeCommentText, setCommentText] = useInput("");
+  const [commentText, onChangeCommentText, setCommentText] = useInput('');
   const dispatch = useDispatch((state) => state.user);
 
   useEffect(() => {
     if (addCommentDone) {
-      setCommentText("");
+      setCommentText('');
     }
   }, [addCommentDone]);
   const onSubmitComment = useCallback(() => {
@@ -25,14 +25,14 @@ const CommentForm = ({ post }) => {
   }, [commentText, id]);
   return (
     <Form onFinish={onSubmitComment}>
-      <Form.Item style={{ position: "relative", margin: 0 }}>
+      <Form.Item style={{ position: 'relative', margin: 0 }}>
         <Input.TextArea
           value={commentText}
           onChange={onChangeCommentText}
           rows={4}
         />
         <Button
-          style={{ position: "absolute", right: 0, bottom: 0 }}
+          style={{ position: 'absolute', right: 0, bottom: 0 }}
           type="primary"
           htmlType="submit"
         >
