@@ -4,6 +4,9 @@ import {
 import axios from 'axios';
 import shortId from 'shortid';
 import {
+  LOAD_POSTS_REQUEST,
+  LOAD_POSTS_SUCCESS,
+  LOAD_POSTS_FAILURE,
   ADD_POST_REQUEST,
   ADD_POST_SUCCESS,
   ADD_POST_FAILURE,
@@ -15,8 +18,29 @@ import {
   ADD_POST_TO_ME,
   REMOVE_POST_OF_ME,
   REMOVE_POST_REQUEST,
+  generateDummyPost,
 } from '../reducers/post';
 
+// 무한 스크롤
+function loadPostsAPI(data) {
+  return axios.get('/api/post', data);
+}
+
+function* loadPosts(action) {
+  try {
+    yield delay(1000);
+    // const result = yield call(addPostAPI);
+    yield put({
+      type: LOAD_POSTS_SUCCESS,
+      data: generateDummyPost(10),
+    });
+  } catch (err) {
+    yield put({
+      type: LOAD_POSTS_FAILURE,
+      data: err.response.data,
+    });
+  }
+}
 // 포스트
 function addPostAPI(data) {
   return axios.post('/api/post', data);
@@ -100,6 +124,14 @@ function* watchRemovePost() {
 function* watchAddComment() {
   yield takeLatest(ADD_COMMENT_REQUEST, addComment);
 }
+function* watchLoadPosts() {
+  yield takeLatest(LOAD_POSTS_REQUEST, loadPosts);
+}
 export default function* postSaga() {
-  yield all([fork(watchAddPost), fork(watchRemovePost), fork(watchAddComment)]);
+  yield all([
+    fork(watchAddPost),
+    fork(watchRemovePost),
+    fork(watchAddComment),
+    fork(watchLoadPosts),
+  ]);
 }

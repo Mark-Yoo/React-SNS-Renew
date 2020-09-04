@@ -36,10 +36,8 @@ export const initialState = {
   addCommentLoading: false,
   addCommentDone: false,
   addCommentError: null,
-  hasMorePost: true,
+  hasMorePost: false,
 };
-
-initialState.mainPosts = initialState.mainPosts.concat(generateDummyPost(10));
 
 export const LOAD_POSTS_REQUEST = 'LOAD_POSTS_REQUEST';
 export const LOAD_POSTS_SUCCESS = 'LOAD_POSTS_SUCCESS';
@@ -101,6 +99,7 @@ const reducer = (state = initialState, action) => produce(state, (draft) => {
       draft.mainPosts = action.data.concat(draft.mainPosts);
       draft.loadPostLoading = false;
       draft.loadPostDone = true;
+      draft.hasMorePost = draft.mainPosts.length < 50;
       break;
     case LOAD_POSTS_FAILURE:
       draft.loadPostLoading = false;
