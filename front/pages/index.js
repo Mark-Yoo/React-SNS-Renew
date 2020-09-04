@@ -9,7 +9,7 @@ import { LOAD_POSTS_REQUEST } from '../reducers/post';
 const Home = () => {
   const dispatch = useDispatch();
   const { me } = useSelector((state) => state.user);
-  const { mainPosts, hasMorePosts } = useSelector((state) => state.post);
+  const { mainPosts, hasMorePost } = useSelector((state) => state.post);
 
   useEffect(() => {
     dispatch({
@@ -20,8 +20,8 @@ const Home = () => {
   useEffect(() => {
     function onScroll() {
       // eslint-disable-next-line max-len
-      if (window.scrollY + document.documentElement.clientHeight === document.documentElement.scrollHeight) {
-        if (hasMorePosts) {
+      if (Math.round(window.pageYOffset) + document.documentElement.clientHeight === document.documentElement.scrollHeight - 1 || Math.round(window.pageYOffset) + document.documentElement.clientHeight === document.documentElement.scrollHeight + 1) {
+        if (hasMorePost) {
           dispatch({
             type: LOAD_POSTS_REQUEST,
           });
@@ -33,7 +33,7 @@ const Home = () => {
       // 이벤트를 제거하지 않으면 계속 이벤트가 쌓이는 문제가 생긴다.
       window.removeEventListener('scroll', onScroll);
     };
-  }, [hasMorePosts]);
+  }, [hasMorePost]);
 
   return (
     <AppLayout>

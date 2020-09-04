@@ -26,7 +26,7 @@ function loadPostsAPI(data) {
   return axios.get('/api/post', data);
 }
 
-function* loadPosts(action) {
+function* loadPosts() {
   try {
     yield delay(1000);
     // const result = yield call(addPostAPI);
