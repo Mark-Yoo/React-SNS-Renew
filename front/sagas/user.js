@@ -12,6 +12,12 @@ import {
   SIGN_UP_REQUEST,
   SIGN_UP_SUCCESS,
   SIGN_UP_FAILURE,
+  FOLLOW_REQUEST,
+  UNFOLLOW_REQUEST,
+  FOLLOW_SUCCESS,
+  FOLLOW_FAILURE,
+  UNFOLLOW_FAILURE,
+  UNFOLLOW_SUCCESS,
 } from '../reducers/user';
 
 // 로그인
@@ -88,6 +94,53 @@ function* watchSignUp() {
   yield takeLatest(SIGN_UP_REQUEST, signUp);
 }
 
+function followAPI() {
+  return axios.post('/api/follow');
+}
+
+function* follow() {
+  try {
+    yield delay(1000);
+    yield put({
+      type: FOLLOW_SUCCESS,
+    });
+  } catch (err) {
+    yield put({
+      type: FOLLOW_FAILURE,
+      error: err.response.data,
+    });
+  }
+}
+
+function unfollowAPI() {
+  return axios.post('/api/unfollow');
+}
+function* unfollow() {
+  try {
+    yield delay(1000);
+    yield put({
+      type: UNFOLLOW_SUCCESS,
+    });
+  } catch (err) {
+    yield put({
+      type: UNFOLLOW_FAILURE,
+      error: err.response.data,
+    });
+  }
+}
+function* watchFollow() {
+  yield takeLatest(FOLLOW_REQUEST, follow);
+}
+function* watchUnfollow() {
+  yield takeLatest(UNFOLLOW_REQUEST, unfollow);
+}
+
 export default function* userSaga() {
-  yield all([fork(watchLogIn), fork(watchLogOut), fork(watchSignUp)]);
+  yield all([
+    fork(watchLogIn),
+    fork(watchLogOut),
+    fork(watchSignUp),
+    fork(watchFollow),
+    fork(watchUnfollow),
+  ]);
 }
