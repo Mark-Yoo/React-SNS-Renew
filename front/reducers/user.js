@@ -2,6 +2,14 @@ import produce from 'immer';
 import { ADD_POST_TO_ME, REMOVE_POST_OF_ME } from './post';
 
 export const initialState = {
+  // 팔로우 시도중
+  followLoading: false,
+  followDone: false,
+  followError: null,
+  // 언팔로우 시도중
+  unfollowLoading: false,
+  unfollowDone: false,
+  unfollowError: null,
   // 로그인 시도중
   logInLoading: false,
   logInDone: false,
@@ -10,6 +18,7 @@ export const initialState = {
   logOutLoading: false,
   logOutDone: false,
   logOutError: null,
+  // 회원가입 시도중
   signUpLoading: false,
   signUpDone: false,
   signUpError: null,
@@ -19,7 +28,7 @@ export const initialState = {
   changeNicknameError: null,
   me: null,
   signUpData: {},
-  loginDat: {},
+  loginData: {},
 };
 
 export const LOG_IN_REQUEST = 'LOG_IN_REQUEST';
@@ -68,6 +77,7 @@ const reducer = (state = initialState, action) => produce(state, (draft) => {
       break;
     case FOLLOW_SUCCESS:
       draft.followLoading = false;
+      draft.me.Followings.push({ id: action.data });
       draft.followDone = true;
       break;
     case FOLLOW_FAILURE:
@@ -81,6 +91,7 @@ const reducer = (state = initialState, action) => produce(state, (draft) => {
       break;
     case UNFOLLOW_SUCCESS:
       draft.unfollowLoading = false;
+      draft.me.Followings = draft.me.Followings.filter((v) => v.id !== action.data);
       draft.unfollowDone = true;
       break;
     case UNFOLLOW_FAILURE:
