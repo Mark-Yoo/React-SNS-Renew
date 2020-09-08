@@ -1,6 +1,9 @@
 module.exports = (sequelize, DataTypes) => {
   const Hashtag = sequelize.definen('Hashtag', { // mySql에는 복수인 users로 저장됨
-    name: {},
+    name: {
+      type: DataTypes.STRING(20),
+      allowNull: false,
+    },
   }, {
     charset = 'utf8mb4',
     collate: 'utf8mb4_general_ci', // 한글 저장
