@@ -1,13 +1,16 @@
 module.exports = (sequelize, DataTypes) => {
-  const Comment = sequelize.definen('Comment', { // mySql에는 복수인 users로 저장됨
+  const Comment = sequelize.define('Comment', { // mySql에는 복수인 users로 저장됨
     content: {
       type: DataTypes.TEXT,
       allowNull: false,
     },
   }, {
-    charset = 'utf8mb4',
+    charset: 'utf8mb4',
     collate: 'utf8mb4_general_ci', // 한글 저장
   });
-  Comment.associate = (db) => {};
+  Comment.associate = (db) => {
+    db.Comment.belongsTo(db.User);
+    db.Comment.hasMany(db.Comment);
+  };
   return Comment;
 }
