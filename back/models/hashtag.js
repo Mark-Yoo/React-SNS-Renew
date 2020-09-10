@@ -10,7 +10,7 @@ module.exports = (sequelize, DataTypes) => {
   });
   Hashtag.associate = (db) => {
     // belongsToMany는 중간 테이블을 만들어 각각의 hashtag가 연결되는 post들을 가지고 있다.
-    db.Hashtag.belongsToMany(db.Post);
+    db.Hashtag.belongsToMany(db.Post, { through: 'PostHashtag' });
   };
   return Hashtag;
 }
